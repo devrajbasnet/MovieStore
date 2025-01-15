@@ -1,0 +1,95 @@
+﻿@model MovieStore.Models.ViewModel.LoginModel
+@{
+}
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        background-image:url('/images/11.jpeg');
+        background-size: cover;
+        background-position: center;
+        font-family: Arial, sans-serif;
+    }
+
+    form.w-40 {
+        max-width: 400px;
+        margin: 100px auto;
+        background-color: rgba(255, 255, 255, 0.9); /* Slightly transparent white background */
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    h2.pb-10 {
+        text-align: center;
+        margin-bottom: 20px;
+        color: #333;
+    }
+
+    .input-container {
+        margin-bottom: 15px;
+    }
+
+    .input {
+        width: 100%;
+        padding: 10px;
+        margin-top: 5px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+
+    .btn {
+        width: 100%;
+        padding: 10px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 16px;
+    }
+
+    .btn:hover {
+        background-color: #0056b3;
+    }
+
+    .alert {
+        color: #721c24;
+        background-color: #f8d7da;
+        border-color: #f5c6cb;
+        padding: 10px;
+        margin-top: 10px;
+        border-radius: 4px;
+    }
+
+    .error {
+        color: red;
+        font-size: 12px;
+    }
+</style>
+<form class="w-40" asp-action="Login" method="post">
+    <h2 class="pb-10">Login</h2>
+    <div class="input-container">
+        <label asp-for="Username" class="w-40">Username</label>
+        <input type="text" class="input" asp-for="Username">
+    </div>
+    <div class="message-box pd-x-28 error">
+        <span asp-validation-for="Username"></span>
+    </div>
+    <div class="input-container">
+        <label asp-for="Password" class="w-40">Password</label>
+        <input type="password" class="input" asp-for="Password">
+    </div>
+    <div class="message-box pd-x-28 error">
+        <span asp-validation-for="Password"></span>
+    </div>
+    @if (TempData["msg"] != null)
+    {
+        <div class="alert mb-1">
+            @TempData["msg"]
+        </div>
+    }
+    <div class="input-container">
+        <button class="btn btn-default" type="submit">Login</button>
+    </div>
+</form>
